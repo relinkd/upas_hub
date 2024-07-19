@@ -1,7 +1,7 @@
 export * from './with-router';
 export * from './with-theme';
 export * from './with-store';
-export * from './with-wallet-connect';
+export * from './with-ic-connect';
 export * from './with-persistor';
 
 export const withProviders =

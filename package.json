@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@amfi/connect-wallet": "git+https://github.com/Rock-n-Block/connect-wallet-lib.git#master",
+    "@connect2ic/core": "^0.2.0-beta.24",
+    "@connect2ic/react": "^0.2.0-beta.24",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
@@ -96,10 +97,8 @@
     "webpack": "^5.72.0"
   },
   "scripts": {
-    "vite": "vite",
-    "vite-build": "vite build",
-    "start": "craco start",
-    "build": "craco build",
+    "start": "vite",
+    "build": "vite build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"{src,types,scripts}/**/*.{json,{j,t}s{,x},scss,}\"",

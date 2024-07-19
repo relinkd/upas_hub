@@ -46,9 +46,7 @@ export default defineConfig({
         global: 'globalThis'
       },
       plugins: [
-        NodeGlobalsPolyfillPlugin({
-          buffer: true
-        }),
+        NodeGlobalsPolyfillPlugin(),
         NodeModulesPolyfillPlugin()
       ]
     }

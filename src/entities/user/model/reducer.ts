@@ -1,20 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Chains, ChainType, WalletProviders } from 'shared/config';
 
 export type UserState = {
   address: string;
-  provider: WalletProviders;
-  chainType: ChainType;
   isAdmin: boolean;
-  network: Chains;
 };
 
 const initialUserState: UserState = {
   address: '',
-  provider: WalletProviders.metamask,
   isAdmin: false,
-  chainType: 'testnet', // TODO: change to mainnet on production
-  network: Chains.Polygon,
 };
 
 const userSlice = createSlice({

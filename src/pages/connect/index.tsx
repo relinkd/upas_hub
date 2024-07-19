@@ -4,11 +4,9 @@ import {
   BORDER,
   BORDER_RADIUS_S,
   BORDER_WIDTH_HOVER,
-  Chains,
-  useWalletConnectorContext,
-  WalletProviders,
 } from 'shared';
 import { Layout, LayoutBackground } from 'widgets';
+import { ConnectButton, ConnectDialog, Connect2ICProvider, useConnect } from "@connect2ic/react"
 
 import { walletsOptions } from './helper';
 
@@ -35,14 +33,14 @@ const InnerWrapper = styled(Stack)(() => ({
 }));
 
 export const ConnectPage = () => {
-  const { connect } = useWalletConnectorContext();
-
-  const handleConnectWallet = useCallback(
-    (provider: WalletProviders, chain: Chains) => {
-      connect(provider, chain);
+  const { isConnected, principal, activeProvider } = useConnect({
+    onConnect: () => {
+      // Signed in
     },
-    [connect],
-  );
+    onDisconnect: () => {
+      // Signed out
+    }
+  })
 
   return (
     <Layout bg={LayoutBackground.Sm}>
@@ -50,14 +48,8 @@ export const ConnectPage = () => {
         Connect your wallet
       </Typography>
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} justifyContent="space-between" alignItems="center">
-        {walletsOptions.map(({ provider, chain, icon, text }) => (
-          <WalletCard key={text} onClick={() => handleConnectWallet(provider, chain)}>
-            <InnerWrapper>
-              {icon}
-              <Typography className="black">{text}</Typography>
-            </InnerWrapper>
-          </WalletCard>
-        ))}
+        <ConnectButton />
+        <ConnectDialog dark />
       </Stack>
       <Typography className="center" mt={7.5}>
         Sign in by selecting your preffered wallet
