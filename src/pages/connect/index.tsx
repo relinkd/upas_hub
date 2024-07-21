@@ -48,7 +48,7 @@ export const ConnectPage = () => {
       </Typography>
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={1} justifyContent="space-between" alignItems="center">
         <ConnectButton />
-        <ConnectDialog dark />
+        <ConnectDialog dark={false} />
       </Stack>
       <Typography className="center" mt={7.5}>
         Sign in by selecting your preffered wallet
