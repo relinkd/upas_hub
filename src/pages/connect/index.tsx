@@ -8,7 +8,6 @@ import {
 import { Layout, LayoutBackground } from 'widgets';
 import { ConnectButton, ConnectDialog, Connect2ICProvider, useConnect } from "@connect2ic/react"
 
-import { walletsOptions } from './helper';
 
 const WalletCard = styled(Box)(({ theme }) => ({
   width: 200,
