@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IConnector } from '@connect2ic/core';
 
 export type UserState = {
-  address: string;
-  isAdmin: boolean;
+  isConnected: boolean
 };
 
 const initialUserState: UserState = {
-  address: '',
-  isAdmin: false,
+  isConnected: false
 };
 
 const userSlice = createSlice({
@@ -22,13 +21,6 @@ const userSlice = createSlice({
     clearUserState: () => ({
       ...initialUserState,
     }),
-
-    disconnectWalletState: () => {
-      localStorage.removeItem('walletconnect');
-      return {
-        ...initialUserState,
-      };
-    },
 
     /** For saga */
     /* eslint-disable @typescript-eslint/no-unused-vars */

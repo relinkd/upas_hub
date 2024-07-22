@@ -15,7 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 const userPersistConfig: MyPersistConfig<UserState> = {
   key: 'user',
   storage,
-  whitelist: ['provider', 'address', 'network', 'chainType'],
+  whitelist: [],
 };
 const reducers = {
   ...reducer,
