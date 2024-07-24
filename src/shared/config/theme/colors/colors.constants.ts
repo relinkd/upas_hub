@@ -11,3 +11,4 @@ export const COLOR_BUTTON = '#ffffff1a';
 export const COLOR_RED = '#FF0000';
 export const COLOR_DARK = '#1D1D1D';
 export const COLOR_WH_10 = 'rgba(255, 255, 255, 0.1)';
+export const COLOR_PURPLE_GRADIENT = 'linear-gradient(128.74deg, #8A2BDD 5.87%, #57DCFE 102.86%)';

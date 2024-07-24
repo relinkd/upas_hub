@@ -3,16 +3,16 @@ import { Stack, Typography, styled } from '@mui/material';
 import { userModel } from 'entities/user';
 import { Layout, LayoutBackground } from 'widgets';
 import { ConnectButton, ConnectDialog, Connect2ICProvider, useConnect } from "@connect2ic/react"
-import { BORDER_RADIUS_S } from 'shared';
+import { BORDER_RADIUS_S, COLOR_PURPLE_GRADIENT, COLOR_LIGHT_GRAY, BORDER_PADDING } from 'shared';
 
 
 const GradientButtonWraper = styled(Stack)(({ theme }) => ({
-  background: "linear-gradient(128.74deg, #8A2BDD 5.87%, #57DCFE 102.86%)",
+  background: COLOR_PURPLE_GRADIENT,
   position: "relative",
   borderRadius: BORDER_RADIUS_S,
-  padding: "2px",
+  padding: BORDER_PADDING,
   '&:hover': {
-    background: "gray"
+    background: COLOR_LIGHT_GRAY
   }
 }))
 
