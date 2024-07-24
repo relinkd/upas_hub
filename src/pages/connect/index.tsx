@@ -7,7 +7,6 @@ import { ConnectButton, ConnectDialog, useConnect } from "@connect2ic/react"
 import { routes, GradientButtonWraper } from 'shared';
 import { useNavigate } from 'react-router-dom';
 
-
 export const ConnectPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

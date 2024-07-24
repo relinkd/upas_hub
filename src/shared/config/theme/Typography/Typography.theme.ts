@@ -7,9 +7,9 @@ export enum FontWeights {
 }
 
 export enum FontFamilies {
-  primary = '"Chakra Petch", sans-serif',
+  primary = '"Inter", sans-serif',
   secondary = '"Alpha Lyrae", sans-serif',
-  tertiary = '"Inter", sans-serif',
+  tertiary = '"Chakra Petch", sans-serif',
 }
 
 export const styleVariations = {
