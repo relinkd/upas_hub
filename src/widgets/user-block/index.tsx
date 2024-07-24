@@ -1,5 +1,5 @@
 import { Stack, Typography, Box } from '@mui/material';
-import { GradientButtonWraper, COLOR_BACKGROUND_PURPLE, BORDER_RADIUS_S, COLOR_BLACK } from 'shared';
+import { GradientButtonWraper, COLOR_BACKGROUND_PURPLE, BORDER_RADIUS_S, COLOR_BLACK, BORDER, COLOR_LIGHT_GRAY } from 'shared';
 
 export const UserBlock = () => {
 
@@ -8,7 +8,9 @@ export const UserBlock = () => {
         backgroundColor: COLOR_BACKGROUND_PURPLE,
         borderRadius: BORDER_RADIUS_S,
         padding: 3,
-        width: "900px"
+        width: "900px",
+        border: BORDER,
+        borderColor: COLOR_LIGHT_GRAY
     }}>
       <Stack justifyContent="left">
         <GradientButtonWraper>
