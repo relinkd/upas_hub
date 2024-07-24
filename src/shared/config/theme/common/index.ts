@@ -8,7 +8,7 @@ export const BORDER_RADIUS_S = '7px';
 
 // ===== Borders
 export const BORDER = '1px solid';
-export const BORDER_PADDING = '2px';
+export const BORDER_PADDING = '1px';
 export const BORDER_WIDTH_HOVER = '1px 1px 4px 1px';
 
 // ===== Transitions

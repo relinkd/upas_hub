@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Stack, Typography, styled } from '@mui/material';
 import { userModel } from 'entities/user';
 import { Layout, LayoutBackground } from 'widgets';
 import { ConnectButton, ConnectDialog, Connect2ICProvider, useConnect } from "@connect2ic/react"
-import { BORDER_RADIUS_S, COLOR_PURPLE_GRADIENT, COLOR_LIGHT_GRAY, BORDER_PADDING } from 'shared';
+import { BORDER_RADIUS_S, COLOR_PURPLE_GRADIENT, COLOR_LIGHT_GRAY, BORDER_PADDING, routes } from 'shared';
+import { useNavigate } from 'react-router-dom';
 
 
 const GradientButtonWraper = styled(Stack)(({ theme }) => ({
@@ -19,6 +21,7 @@ const GradientButtonWraper = styled(Stack)(({ theme }) => ({
 
 export const ConnectPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isConnected, principal, activeProvider } = useConnect({
     onConnect: () => {
       dispatch(
@@ -35,6 +38,14 @@ export const ConnectPage = () => {
       )
     }
   })
+
+  console.log(isConnected, principal)
+
+  useEffect(() => {
+    if (isConnected) {
+      navigate(routes.profile.path);
+    }
+  }, [isConnected, navigate]);
 
   return (
     <Layout bg={LayoutBackground.Sm}>
