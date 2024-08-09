@@ -1,29 +1,28 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Various IDEs and Editors
+.vscode/
+.idea/
+**/*~
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-/reports
-
-# production
-/build
-
-# misc
+# Mac OSX temporary files
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+**/.DS_Store
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# dfx temporary files
+.dfx/
 
-# IDE
-/.idea
-/.vscode
-node_modules
+# generated files
+**/declarations/
+**/build/
+
+# rust
+target/
+
+# frontend code
+node_modules/
+dist/
+.svelte-kit/
+
+# environment variables
+.env
+
+package-lock.json
