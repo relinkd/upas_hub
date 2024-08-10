@@ -8,7 +8,17 @@ export type Issuer = {
 export type Principal = {
     _arr: Uint8Array[];
     _isPrincipal: boolean; 
+    toText: any;
 }
   
 export type IssuerTuple = [Principal, Issuer];
-  
+
+
+export type AchievementFormated = [
+  Principal,
+  [string, { Text: string }][]
+]
+
+export type Achievements = {
+  Ok: AchievementFormated[]
+}
