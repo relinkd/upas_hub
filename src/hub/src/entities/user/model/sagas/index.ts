@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 
-import getUserInfo from './getUserInfo';
+import getUserAchievements from './getUserAchievements';
 
 export function* userSagas() {
-  yield fork(getUserInfo);
+  yield fork(getUserAchievements);
 }

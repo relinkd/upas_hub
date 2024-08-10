@@ -1,9 +1,10 @@
 import { error, request, success } from 'shared/api';
 import { put, takeLatest } from 'typed-redux-saga';
+import { createReactor } from '@ic-reactor/react';
 
 import { userActions } from '../reducer';
 
-export function* getUserInfoSaga({ type }: ReturnType<typeof userActions.getUserInfo>) {
+export function* getUserAchievementsSaga({ type, payload: { } }: ReturnType<typeof userActions.getUserAchievements>) {
   yield* put(request(type));
   try {
     yield* put(success(type));
@@ -13,5 +14,5 @@ export function* getUserInfoSaga({ type }: ReturnType<typeof userActions.getUser
 }
 
 export default function* listener() {
-  yield takeLatest(userActions.getUserInfo.type, getUserInfoSaga);
+  yield takeLatest(userActions.getUserAchievements.type, getUserAchievementsSaga);
 }

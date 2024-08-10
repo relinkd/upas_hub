@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
-import { ActorProvider, AgentProvider } from '@ic-reactor/react';
 import { canisterId as achievementCanisterId, idlFactory } from '../../../../declarations/achievement';
-import { createActorContext } from "@ic-reactor/react"
+import { createActorContext } from "@ic-reactor/react";
+import { useParams } from "react-router-dom";
 
 export const {
   ActorProvider: AchievementProvider,
@@ -16,7 +16,8 @@ export const {
 })
 
 export const WithAchievementProvider: FC<PropsWithChildren> = ({ children }) => {
-  
+
+  let { reputation_module, achievement} = useParams(); 
 
   return (
     <AchievementProvider>

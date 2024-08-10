@@ -1,13 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IConnector } from '@connect2ic/core';
 
 export type UserState = {
   isConnected: boolean
+  achievements: any
 };
 
 const initialUserState: UserState = {
-  isConnected: false
+  isConnected: false,
+  achievements: []
 };
+
+export type GetUserAchievementsReq = {
+  getCollections: any,
+}
 
 const userSlice = createSlice({
   name: 'user',
@@ -24,7 +29,7 @@ const userSlice = createSlice({
 
     /** For saga */
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    getUserInfo(state, action: PayloadAction) {},
+    getUserAchievements(state, action: PayloadAction<GetUserAchievementsReq>) {},
   },
 });
 
