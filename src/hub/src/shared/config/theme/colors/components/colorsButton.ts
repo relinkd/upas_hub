@@ -1,4 +1,4 @@
-import { COLOR_ACCENT, COLOR_BLACK, COLOR_BUTTON, COLOR_CARD, COLOR_WH } from '../colors.constants';
+import { COLOR_ACCENT, COLOR_BLACK, COLOR_BUTTON, COLOR_CARD, COLOR_WH, COLOR_PURPLE } from '../colors.constants';
 
 export const colorsButton = {
   buttonDisabledColor: COLOR_CARD,
@@ -11,6 +11,6 @@ export const colorsButton = {
   //  contained secondary button
   buttonContainedSecondaryBackground: COLOR_ACCENT,
   buttonContainedSecondaryColor: COLOR_BLACK,
-  buttonContainedSecondaryBackgroundHover: COLOR_ACCENT,
+  buttonContainedSecondaryBackgroundHover: COLOR_PURPLE,
   buttonContainedSecondaryColorHover: COLOR_BLACK,
 };

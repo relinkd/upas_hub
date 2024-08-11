@@ -85,8 +85,8 @@ export const ModalWrapper = ({
             {title}
           </Typography>
           <IconButton
-            size="large"
-            color={isDownMd ? 'primary' : 'secondary'}
+            size="medium"
+            color={'primary'}
             onClick={handleClose}
             sx={{ position: isDownMd ? 'absolute' : 'unset', left: 0 }}
           >

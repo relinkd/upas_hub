@@ -25,13 +25,13 @@ export const AchievementModal = forwardRef<HTMLElement, Modal>(({ data: { collec
 
     return (
         <ModalWrapper size="md" title='Achievement card'>
-            <Stack justifyContent="space-between" flexDirection="row">
+            <Stack justifyContent="left" flexDirection="row">
                 <Typography>Name:</Typography>
-                <Typography>{achievements[collection][id].Name}</Typography>
+                <Typography sx={{color: COLOR_BLACK, paddingLeft: "12%"}}>{achievements[collection][id].Name}</Typography>
             </Stack>
-            <Stack justifyContent="space-between" flexDirection="row">
+            <Stack justifyContent="left" flexDirection="row" paddingY={6}>
                 <Typography>Description:</Typography>
-                <Typography>{achievements[collection][id].Description}</Typography>
+                <Typography sx={{color: COLOR_BLACK, paddingLeft: "5%"}}>{achievements[collection][id].Description}</Typography>
             </Stack>
             <Stack direction="row" sx={{
                 width: '100%',
