@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { State } from 'app/store';
 
-import { EmptyModalPayload } from '../ui';
+import { EmptyModalPayload, AchievementModalPayload } from '../ui';
 
 export enum Modals {
   EmptyModal = 'EmptyModal',
+  AchievementModal = 'AchievementModal'
 }
 
-export type ModalPayload = EmptyModalPayload;
+export type ModalPayload = EmptyModalPayload | AchievementModalPayload;
 
 export type ModalState = {
   modal: ModalPayload | null;

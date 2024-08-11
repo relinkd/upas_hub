@@ -6,6 +6,7 @@ import { flexHelper } from 'shared';
 import { modalActions, ModalPayload, Modals, modalSelector } from '../model';
 
 import { EmptyModal } from './EmptyModal';
+import { AchievementModal } from './AchievementModal';
 
 export interface Modal<T extends { type: Modals; data: any } = { type: Modals; data: any }> {
   onClose?: () => void;
@@ -14,6 +15,7 @@ export interface Modal<T extends { type: Modals; data: any } = { type: Modals; d
 
 const modalMapping: { [key in keyof typeof Modals]: FC<Modal> } = {
   [Modals.EmptyModal]: EmptyModal,
+  [Modals.AchievementModal]: AchievementModal
 };
 
 const { closeModal } = modalActions;
