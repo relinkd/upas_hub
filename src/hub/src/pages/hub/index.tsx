@@ -1,10 +1,11 @@
 import { Typography, Stack, Button } from '@mui/material';
-import { Layout, UserBlock } from 'widgets';
+import { Layout, UserBlock, Achievements as AchievementsWidget } from 'widgets';
 import { useQueryCall, useAuth, useAgent } from '@ic-reactor/react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Achievements } from 'shared';
 import { userModel } from 'entities/user';
+
 
 export const HubPage = () => {
 
@@ -22,25 +23,25 @@ export const HubPage = () => {
   useEffect(() => {
     let typedAch = achievements as Achievements;
 
-    const result: Record<string, Record<string, string>> = {};
+    const result: Record<string, Record<string, string>[]> = {};
 
     if(!achievements) return;
 
     typedAch?.Ok.forEach(([principal, achievementArray]) => {
       const principalKey = principal?.toText() as string;
-      const innerObject: Record<string, string> = {};
+      
+
+      result[principalKey] = [];
   
       achievementArray.forEach((fields) => {
+        const innerObject: Record<string, string> = {};
         fields.forEach((field) => {
           const typedField = field as unknown as [string, {Text: string}];
           innerObject[typedField[0]] = typedField[1].Text;
         })
+        result[principalKey].push(innerObject); 
       });
-  
-      result[principalKey] = innerObject; 
     });
-
-    console.log(result, 'result')
 
     dispatch(
       userModel.userActions.updateUserState({
@@ -48,14 +49,12 @@ export const HubPage = () => {
       })
     )
   }, [achievements])
-
-  console.log(achievements, 'nfts')
-  console.log(identity?.getPrincipal().toText())
   
   return (
     <Layout>
       <Stack flexDirection="column" alignItems="center" width={1} maxWidth={1}>
         <UserBlock />
+        <AchievementsWidget />
       </Stack>
     </Layout>
   );

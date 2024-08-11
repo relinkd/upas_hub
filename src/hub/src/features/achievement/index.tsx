@@ -8,15 +8,9 @@ const StyledImg = styled('img')({
   height: '40px'
 });
 
-function buf2hex(buffer: any) { // buffer is an ArrayBuffer
-  return [...new Uint8Array(buffer)]
-      .map(x => x.toString(16).padStart(2, '0'))
-      .join('');
-}
-
-export const Issuer = ({ issuer }: { issuer: IssuerTuple }) => {
+export const Achievement = ({ address, achievement }: { address: string, achievement: Record<string, string> }) => {
   return (
-    <GradientButtonWraper width={1} marginY={1.5} sx={{
+    <GradientButtonWraper width="49%" marginY={1.5} sx={{
       borderRadius: BORDER_RADIUS_S,
       '&:hover': {
         boxShadow: '0px 0px 58.1px -15px #635D952E'
@@ -28,9 +22,9 @@ export const Issuer = ({ issuer }: { issuer: IssuerTuple }) => {
       }}>
           <Stack flexDirection="row" alignItems="center">
             <StyledImg src={icon} />
-            <Typography color={COLOR_BLACK} paddingLeft={6}>{issuer[1].verified ? issuer[1].name : issuer[0]._arr}</Typography>
+            <Typography color={COLOR_BLACK} paddingLeft={6}>{achievement?.Name}</Typography>
           </Stack>
-          {issuer[1].verified ? <Typography color={COLOR_LIGHT_BLUE}>verified</Typography> : <Typography>unverified</Typography>}
+          {/* {issuer[1].verified ? <Typography color={COLOR_LIGHT_BLUE}>verified</Typography> : <Typography>unverified</Typography>} */}
       </Stack>
     </GradientButtonWraper>
   );

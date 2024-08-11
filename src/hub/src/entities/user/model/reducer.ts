@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export type Achievements = Record<string, Record<string, string>[]>
+
 export type UserState = {
   isConnected: boolean
-  achievements: any
+  achievements: Achievements
 };
 
 const initialUserState: UserState = {
   isConnected: false,
-  achievements: []
+  achievements: {}
 };
 
 export type GetUserAchievementsReq = {
