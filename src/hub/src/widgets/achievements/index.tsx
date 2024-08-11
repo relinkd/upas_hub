@@ -18,9 +18,9 @@ export const Achievements = () => {
       flexDirection: 'row'
     }}>
         {
-          Object.keys(achievements).map((key) => {
+          Object.keys(achievements).map((key, id) => {
             const achievementsArray = achievements[key].map(achievement => {
-              return <Achievement address={key} achievement={achievement}/>
+              return <Achievement address={key} achievement={achievement} id={id} />
             })
             return achievementsArray
           })

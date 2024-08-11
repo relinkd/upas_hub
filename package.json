@@ -8,7 +8,6 @@
     "setup": "npm i --workspaces --if-present && dfx canister create indexer && dfx generate indexer && dfx deploy",
     "frontend": "npm start --workspaces --if-present",
     "indexer": "dfx deploy indexer -q -y",
-
     "build": "npm build --workspaces --if-present",
     "prebuild": "npm run prebuild --workspaces --if-present",
     "pretest": "npm run prebuild --workspaces --if-present",
@@ -18,5 +17,8 @@
   "private": true,
   "workspaces": [
     "src/hub"
-  ]
+  ],
+  "dependencies": {
+    "@dfinity/principal": "^1.4.0"
+  }
 }

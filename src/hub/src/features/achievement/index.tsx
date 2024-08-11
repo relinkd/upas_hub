@@ -11,7 +11,7 @@ const StyledImg = styled('img')({
   height: '40px'
 });
 
-export const Achievement = ({ address, achievement }: { address: string, achievement: Record<string, string> }) => {
+export const Achievement = ({ address, achievement, id }: { address: string, achievement: Record<string, string>, id: number }) => {
   const dispatch = useDispatch();
 
   return (
@@ -25,7 +25,10 @@ export const Achievement = ({ address, achievement }: { address: string, achieve
       dispatch(
         modalModel.modalActions.openModal({
           type: Modals.AchievementModal,
-          data: null,
+          data: {
+            id,
+            collection: address
+          },
         }),
       );
     }}
