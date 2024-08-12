@@ -5,11 +5,16 @@ export type Achievements = Record<string, Record<string, string>[]>
 export type UserState = {
   isConnected: boolean
   achievements: Achievements
+  postMessage: {
+    type: String
+    data: String
+  } | undefined
 };
 
 const initialUserState: UserState = {
   isConnected: false,
-  achievements: {}
+  achievements: {},
+  postMessage: undefined
 };
 
 export type GetUserAchievementsReq = {
