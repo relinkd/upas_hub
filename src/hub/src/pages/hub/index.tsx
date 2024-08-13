@@ -13,7 +13,7 @@ export const HubPage = () => {
 
   const {login, authenticated, identity} = useAuth();
 
-  const { postMessage } = useShallowSelector(userModel.selectors.getUser)
+  const { postMessage, achievements: achievementsCurrent } = useShallowSelector(userModel.selectors.getUser)
 
   const { data: achievements, call: refetchAchievements } = useQueryCall({
     functionName: "getPrincipalAchievementsMetadata",
@@ -45,11 +45,13 @@ export const HubPage = () => {
       });
     });
 
-    dispatch(
-      userModel.userActions.updateUserState({
-        achievements: result
-      })
-    )
+    if (JSON.stringify(result) !== JSON.stringify(achievementsCurrent)) {
+      dispatch(
+        userModel.userActions.updateUserState({
+          achievements: result
+        })
+      )
+    }
   }, [achievements])
 
   useEffect(() => {
@@ -58,6 +60,9 @@ export const HubPage = () => {
         type: 'RETURN_IDENTITY',
         payload: identity?.getPrincipal()?.toText()
       }, "http://localhost:5174")
+      window.close()
+    } else if(postMessage?.type === "SIGN_SIGNATURE") {
+      
     }
   }, [postMessage])
   

@@ -8,6 +8,8 @@ export type UserState = {
   postMessage: {
     type: String
     data: String
+    achievement?: string
+    reputation_module?: string
   } | undefined
 };
 

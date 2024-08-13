@@ -3,12 +3,12 @@ import { ModalContainer } from 'entities/modal';
 
 import { withPersistor, withProviders, withRouter, withStore, withTheme, WithICConnect, WithAchievementProvider, WithPostMessage } from './providers';
 import { RouteManager } from './router';
-import { useEffect } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './appStyles/index.scss';
 
 const App = () => {
+
   return (
     <>
       <RouteManager />
@@ -18,4 +18,4 @@ const App = () => {
   );
 };
 
-export default withProviders(withRouter, withTheme, withStore, withPersistor, WithICConnect, WithAchievementProvider, WithPostMessage)(App);
+export default withProviders(withRouter, withTheme, withStore, withPersistor, WithICConnect, WithPostMessage, WithAchievementProvider)(App);
