@@ -18,6 +18,7 @@ export const WithPostMessage: FC<PropsWithChildren> = ({ children }) => {
                 data: event.data.payload
             }
           }))
+
         };
     
         window.addEventListener('message', handleMessage);

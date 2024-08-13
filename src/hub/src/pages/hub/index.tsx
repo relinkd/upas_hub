@@ -3,7 +3,7 @@ import { Layout, UserBlock, Achievements as AchievementsWidget } from 'widgets';
 import { useQueryCall, useAuth, useAgent } from '@ic-reactor/react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Achievements } from 'shared';
+import { Achievements, useShallowSelector } from 'shared';
 import { userModel } from 'entities/user';
 
 
@@ -12,6 +12,8 @@ export const HubPage = () => {
   const dispatch = useDispatch();
 
   const {login, authenticated, identity} = useAuth();
+
+  const { postMessage } = useShallowSelector(userModel.selectors.getUser)
 
   const { data: achievements, call: refetchAchievements } = useQueryCall({
     functionName: "getPrincipalAchievementsMetadata",
@@ -49,6 +51,15 @@ export const HubPage = () => {
       })
     )
   }, [achievements])
+
+  useEffect(() => {
+    if(postMessage?.type === "SELECT_IDENTITY") {
+      window.opener.postMessage({
+        type: 'RETURN_IDENTITY',
+        payload: identity?.getPrincipal()?.toText()
+      }, "http://localhost:5174")
+    }
+  }, [postMessage])
   
   return (
     <Layout>
