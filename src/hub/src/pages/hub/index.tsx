@@ -86,7 +86,7 @@ export const HubPage = () => {
       window.opener.postMessage({
         type: 'RETURN_IDENTITY',
         payload: identity?.getPrincipal()?.toText()
-      }, "http://localhost:5174")
+      }, "http://localhost:5174");
       getToastMessage('success', 'Identity Selected');
       setTimeout(() => {
         window.close()
