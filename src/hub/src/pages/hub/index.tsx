@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Achievements, useShallowSelector } from 'shared';
 import { userModel } from 'entities/user';
+import { useAchievementUpdateCall, useReputationUpdateCall } from 'app/providers';
+import { Principal } from '@dfinity/principal';
 
 
 export const HubPage = () => {
@@ -21,6 +23,22 @@ export const HubPage = () => {
       identity?.getPrincipal()
     ]
   })
+
+  const { call: receiveWithHash }: { call: any } = useAchievementUpdateCall({
+    functionName: "receiveAchievementFromIdentityWalletWithHash",
+    args: [
+        Principal.fromText(postMessage?.data || identity!.getPrincipal()!.toText())
+    ] 
+  })
+
+  const { call: mintAchievement }: { call: any } = useReputationUpdateCall({
+    functionName: "issueAchievementToIdentityWallet",
+    args: [
+        Principal.fromText(postMessage?.achievement || identity!.getPrincipal()!.toText())
+    ] 
+  })
+
+
 
   useEffect(() => {
     let typedAch = achievements as Achievements;
@@ -54,6 +72,13 @@ export const HubPage = () => {
     }
   }, [achievements])
 
+  const receiveAchievement = async () => {
+    const receiveWithHashResult = await receiveWithHash();
+    console.log(receiveWithHashResult, 'hash result');
+    const mintAchievementResult = await mintAchievement();
+    console.log(mintAchievementResult, 'mint result');
+  }
+
   useEffect(() => {
     if(postMessage?.type === "SELECT_IDENTITY") {
       window.opener.postMessage({
@@ -62,7 +87,8 @@ export const HubPage = () => {
       }, "http://localhost:5174")
       window.close()
     } else if(postMessage?.type === "SIGN_SIGNATURE") {
-      
+      console.log('receive achievement')
+      receiveAchievement()
     }
   }, [postMessage])
   

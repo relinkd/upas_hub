@@ -6,8 +6,8 @@ export type UserState = {
   isConnected: boolean
   achievements: Achievements
   postMessage: {
-    type: String
-    data: String
+    type: string
+    data: string
     achievement?: string
     reputation_module?: string
   } | undefined

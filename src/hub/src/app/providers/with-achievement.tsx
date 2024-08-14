@@ -12,7 +12,7 @@ export const {
   useActorState: useAchievementState,
   useMethod: useAchievementMethod,
   useQueryCall: useAchievementQueryCall,
-  useUpdateCall: useAchivementUpdateCall,
+  useUpdateCall: useAchievementUpdateCall,
 } = createActorContext<any>({
   idlFactory,
   withDevtools: true,
