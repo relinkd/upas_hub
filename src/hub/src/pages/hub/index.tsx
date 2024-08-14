@@ -3,7 +3,7 @@ import { Layout, UserBlock, Achievements as AchievementsWidget } from 'widgets';
 import { useQueryCall, useAuth, useAgent } from '@ic-reactor/react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Achievements, useShallowSelector } from 'shared';
+import { Achievements, useShallowSelector, getToastMessage } from 'shared';
 import { userModel } from 'entities/user';
 import { useAchievementUpdateCall, useReputationUpdateCall } from 'app/providers';
 import { Principal } from '@dfinity/principal';
@@ -87,10 +87,20 @@ export const HubPage = () => {
         type: 'RETURN_IDENTITY',
         payload: identity?.getPrincipal()?.toText()
       }, "http://localhost:5174")
-      window.close()
+      getToastMessage('success', 'Identity Selected');
+      setTimeout(() => {
+        window.close()
+      }, 2000)
     } else if(postMessage?.type === "SIGN_SIGNATURE") {
       console.log('receive achievement')
-      // receiveAchievement()
+      dispatch(
+        modalModel.modalActions.openModal({
+          type: Modals.ReceiveAchievementModal,
+          data: {
+            receiveAchievementFunc: receiveAchievement
+          },
+        }),
+      );
     }
   }, [postMessage])
   
@@ -99,16 +109,6 @@ export const HubPage = () => {
       <Stack flexDirection="column" alignItems="center" width={1} maxWidth={1}>
         <UserBlock />
         <AchievementsWidget />
-        <Button onClick={() => {
-          dispatch(
-            modalModel.modalActions.openModal({
-              type: Modals.ReceiveAchievementModal,
-              data: {
-                receiveAchievementFunc: receiveAchievement
-              },
-            }),
-          );
-        }}>Click</Button>
       </Stack>
     </Layout>
   );
