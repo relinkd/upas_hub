@@ -79,7 +79,7 @@ export const ModalWrapper = ({
           alignItems="center"
           position="relative"
           width="100%"
-          mb={{ xs: 6, md: 8 }}
+          mb={{ xs: 6, md: 3 }}
         >
           <Typography variant="h1" fontWeight={fontWeight} className={`small ${font}`}>
             {title}

@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { State } from 'app/store';
 
-import { EmptyModalPayload, AchievementModalPayload } from '../ui';
+import { EmptyModalPayload, AchievementModalPayload, ReceiveAchievementModalPayload } from '../ui';
 
 export enum Modals {
   EmptyModal = 'EmptyModal',
-  AchievementModal = 'AchievementModal'
+  AchievementModal = 'AchievementModal',
+  ReceiveAchievementModal = 'ReceiveAchievementModal'
 }
 
-export type ModalPayload = EmptyModalPayload | AchievementModalPayload;
+export type ModalPayload = EmptyModalPayload | AchievementModalPayload | ReceiveAchievementModalPayload;
 
 export type ModalState = {
   modal: ModalPayload | null;

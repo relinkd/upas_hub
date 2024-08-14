@@ -7,6 +7,8 @@ import { Achievements, useShallowSelector } from 'shared';
 import { userModel } from 'entities/user';
 import { useAchievementUpdateCall, useReputationUpdateCall } from 'app/providers';
 import { Principal } from '@dfinity/principal';
+import { modalModel } from 'entities/modal';
+import { Modals } from 'entities/modal/model';
 
 
 export const HubPage = () => {
@@ -88,7 +90,7 @@ export const HubPage = () => {
       window.close()
     } else if(postMessage?.type === "SIGN_SIGNATURE") {
       console.log('receive achievement')
-      receiveAchievement()
+      // receiveAchievement()
     }
   }, [postMessage])
   
@@ -97,6 +99,16 @@ export const HubPage = () => {
       <Stack flexDirection="column" alignItems="center" width={1} maxWidth={1}>
         <UserBlock />
         <AchievementsWidget />
+        <Button onClick={() => {
+          dispatch(
+            modalModel.modalActions.openModal({
+              type: Modals.ReceiveAchievementModal,
+              data: {
+                receiveAchievementFunc: receiveAchievement
+              },
+            }),
+          );
+        }}>Click</Button>
       </Stack>
     </Layout>
   );

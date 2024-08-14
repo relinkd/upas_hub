@@ -7,6 +7,7 @@ import { modalActions, ModalPayload, Modals, modalSelector } from '../model';
 
 import { EmptyModal } from './EmptyModal';
 import { AchievementModal } from './AchievementModal';
+import { ReceiveAchievementModal } from './ReceiveAchievementModal';
 
 export interface Modal<T extends { type: Modals; data: any } = { type: Modals; data: any }> {
   onClose?: () => void;
@@ -15,7 +16,8 @@ export interface Modal<T extends { type: Modals; data: any } = { type: Modals; d
 
 const modalMapping: { [key in keyof typeof Modals]: FC<Modal> } = {
   [Modals.EmptyModal]: EmptyModal,
-  [Modals.AchievementModal]: AchievementModal
+  [Modals.AchievementModal]: AchievementModal,
+  [Modals.ReceiveAchievementModal]: ReceiveAchievementModal
 };
 
 const { closeModal } = modalActions;
