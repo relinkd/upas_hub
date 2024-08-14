@@ -25,6 +25,10 @@ export const ReceiveAchievementModal = forwardRef<HTMLElement, Modal>(({ data: {
             <Button onClick={async () => {
                 await receiveAchievementFunc()
                 getToastMessage('success', 'Achievement received');
+                window.opener.postMessage({
+                    type: 'RECEIVED_ACHIEVEMENT',
+                    payload: ''
+                  }, "http://localhost:5174");
                 setTimeout(() => {
                     window.close()
                 }, 3000)
