@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, memo } from 'react';
 import { canisterId as achievementCanisterId, idlFactory } from '../../../../declarations/achievement';
 import { canisterId as reputationCanisterId, idlFactory as moduleIdlFactory } from '../../../../declarations/reputation_module';
 import { createActorContext } from "@ic-reactor/react";
@@ -29,17 +29,18 @@ export const {
   withDevtools: true,
 })
 
-export const WithAchievementProvider: FC<PropsWithChildren> = ({ children }) => {
+export const WithAchievementProvider: FC<PropsWithChildren> = memo(({ children }) => {
 
-  const { postMessage } = useSelector(userModel.selectors.getUser);
+  const postMessage = useShallowSelector(userModel.selectors.getPostMessage);
+  console.log('postMessage rerender')
 
   console.log(postMessage?.achievement, postMessage?.reputation_module, 'messagepost')
 
   return(
-    <ReputationProvider canisterId={postMessage?.reputation_module || 'gc5gl-leaaa-aaaaa-qaara-cai'}>
-        <AchievementProvider canisterId={postMessage?.achievement || 'gc5gl-leaaa-aaaaa-qaara-cai'}>
+    <ReputationProvider canisterId={postMessage?.reputation_module || '2vxsx-fae'}>
+        <AchievementProvider canisterId={postMessage?.achievement || '2vxsx-fae'}>
           {children}
         </AchievementProvider>
     </ReputationProvider>
   )
-};
+});

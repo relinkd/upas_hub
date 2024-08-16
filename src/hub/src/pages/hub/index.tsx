@@ -2,8 +2,10 @@ import { Stack } from '@mui/material';
 import { Layout, UserBlock, Achievements as AchievementsWidget } from 'widgets';
 import { WithAchievementProvider } from 'app/providers';
 import { withProviders } from 'app/providers';
+import { AchievementsPost } from 'features';
 
-const AchievementsWrappedWidget = withProviders(WithAchievementProvider)(AchievementsWidget);
+const AchievementsWidgetWithLogic = () => {return (<><AchievementsWidget /><AchievementsPost /></>)}
+const AchievementsWrappedWidget = withProviders(WithAchievementProvider)(AchievementsWidgetWithLogic);
 
 
 export const HubPage = () => {

@@ -9,7 +9,6 @@ export const WithPostMessage: FC<PropsWithChildren> = ({ children }) => {
 
     useEffect(() => {
         const handleMessage = (event: MessageEvent) => {
-          console.log(event.data, 'testpost')
           if (event.origin === window.location.origin) return;
           if (!event.data.reputation_requester) return;
           
