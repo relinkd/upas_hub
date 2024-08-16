@@ -36,8 +36,8 @@ export const WithAchievementProvider: FC<PropsWithChildren> = ({ children }) => 
   console.log(postMessage?.achievement, postMessage?.reputation_module, 'messagepost')
 
   return(
-    <ReputationProvider canisterId={postMessage?.reputation_module || 'ctiya-peaaa-aaaaa-qaaja-cai'}>
-        <AchievementProvider canisterId={postMessage?.achievement || 'ctiya-peaaa-aaaaa-qaaja-cai'}>
+    <ReputationProvider canisterId={postMessage?.reputation_module || 'gc5gl-leaaa-aaaaa-qaara-cai'}>
+        <AchievementProvider canisterId={postMessage?.achievement || 'gc5gl-leaaa-aaaaa-qaara-cai'}>
           {children}
         </AchievementProvider>
     </ReputationProvider>

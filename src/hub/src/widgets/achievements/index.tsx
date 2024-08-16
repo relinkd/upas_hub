@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography, Stack } from '@mui/material';
 import { useShallowSelector } from 'shared';
 import { userModel } from 'entities/user';
 import { Achievement } from 'features/achievement';
@@ -25,6 +25,11 @@ export const Achievements = () => {
             return achievementsArray
           })
         }
+        <Stack justifyContent='center' flexDirection='row' width={1}>
+          {
+            Object.keys(achievements).length === 0 && <Typography>No achievements</Typography>
+          }
+        </Stack>
     </Box>
   );
 };
