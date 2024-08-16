@@ -5,6 +5,7 @@ import { ModalWrapper } from '../ModalWrapper';
 import { useShallowSelector, COLOR_LIGHTER_GRAY, BORDER_RADIUS_M, BORDER, COLOR_BORDER_PURPLE, COLOR_BLACK, getToastMessage } from 'shared';
 import { modalActions } from '../../model';
 import { useDispatch } from 'react-redux';
+import { userModel } from 'entities/user';
 
 
 export interface ReceiveAchievementModalPayload {
@@ -16,6 +17,7 @@ const { closeModal } = modalActions;
 
 export const ReceiveAchievementModal = forwardRef<HTMLElement, Modal>(({ data: { receiveAchievementFunc } }) => {
     const dispatch = useDispatch();
+    const { postMessage } = useShallowSelector(userModel.selectors.getUser)
 
     return (
         <ModalWrapper size="sm" title=''>
@@ -28,7 +30,7 @@ export const ReceiveAchievementModal = forwardRef<HTMLElement, Modal>(({ data: {
                 window.opener.postMessage({
                     type: 'RECEIVED_ACHIEVEMENT',
                     payload: ''
-                  }, "http://localhost:5174");
+                  }, postMessage?.reputation_requester);
                 setTimeout(() => {
                     window.close()
                 }, 3000)

@@ -10,6 +10,7 @@ export type UserState = {
     data: string
     achievement?: string
     reputation_module?: string
+    reputation_requester: string
   } | undefined
 };
 

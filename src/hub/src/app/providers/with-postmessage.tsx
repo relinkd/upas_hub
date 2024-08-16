@@ -9,13 +9,15 @@ export const WithPostMessage: FC<PropsWithChildren> = ({ children }) => {
 
     useEffect(() => {
         const handleMessage = (event: MessageEvent) => {
-          if (event.origin !== "http://localhost:5174") {
-            return;
-          }
+          console.log(event.data, 'testpost')
+          if (event.origin === window.location.origin) return;
+          if (!event.data.reputation_requester) return;
+          
             dispatch(userModel.userActions.updateUserState({
               postMessage: {
                 type: event.data.type,
                 data: event.data.payload,
+                reputation_requester: event.data.reputation_requester,
                 achievement: event.data.achievement,
                 reputation_module: event.data.reputation_module
             }
