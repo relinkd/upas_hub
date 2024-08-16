@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { modalModel } from 'entities/modal';
 import { Modals } from 'entities/modal/model';
-import { useReputationUpdateCall, useAchievementUpdateCall, useAchievementState } from 'app/providers';
+import { useReputationUpdateCall, useAchievementUpdateCall, useAchievementState, useReputationState } from 'app/providers';
 import { Principal } from '@dfinity/principal';
 
 
@@ -15,6 +15,7 @@ export const AchievementsPost = () => {
 
     const { postMessage } = useShallowSelector(userModel.selectors.getUser)
     const { canisterId } = useAchievementState();
+    const { canisterId: reputationCanisterId } = useReputationState();
 
     const { call: receiveWithHash }: { call: any } = useAchievementUpdateCall({
       functionName: "receiveAchievementFromIdentityWalletWithHash",
@@ -38,7 +39,7 @@ export const AchievementsPost = () => {
     }
     useEffect(() => {
       console.log(canisterId, 'canisterID')
-      if(canisterId === '2vxsx-fae') return
+      if(canisterId === '2vxsx-fae' || reputationCanisterId === '2vxsx-fae' ) return
 
       if(postMessage?.type === "SELECT_IDENTITY") {
         window.opener.postMessage({

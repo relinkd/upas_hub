@@ -4,7 +4,10 @@ import { userModel } from 'entities/user';
 import { Achievement } from 'features/achievement';
 import { useQueryCall, useAuth } from '@ic-reactor/react';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+
+type AchievementsFormated = Record<string, Record<string, string>[]>;
 
 export const Achievements = () => {
 
@@ -12,7 +15,7 @@ export const Achievements = () => {
 
   const dispatch = useDispatch();
 
-  const { achievements: achievementsCurrent } = useShallowSelector(userModel.selectors.getUser)
+  const [achievementsCurrent, setAchievementsCurrent] = useState<AchievementsFormated>({})
 
   const { data: achievements, call: refetchAchievements } = useQueryCall({
     functionName: "getPrincipalAchievementsMetadata",
@@ -25,7 +28,7 @@ export const Achievements = () => {
   useEffect(() => {
     let typedAch = achievements as AchievementsType;
 
-    const result: Record<string, Record<string, string>[]> = {};
+    const result: AchievementsFormated = {};
 
     if(!achievements) return;
 
@@ -45,13 +48,13 @@ export const Achievements = () => {
       });
     });
 
-    if (JSON.stringify(result) !== JSON.stringify(achievementsCurrent)) {
-      dispatch(
-        userModel.userActions.updateUserState({
-          achievements: result
-        })
-      )
-    }
+    dispatch(
+      userModel.userActions.updateUserState({
+        achievements: result
+      })
+    )
+
+    setAchievementsCurrent(result);
   }, [achievements])
 
  
@@ -65,8 +68,8 @@ export const Achievements = () => {
       flexDirection: 'row'
     }}>
         {
-          Object.keys(achievementsCurrent).map((key, id) => {
-            const achievementsArray = achievementsCurrent[key].map(achievement => {
+          Object.keys(achievementsCurrent).map((key) => {
+            const achievementsArray = achievementsCurrent[key].map((achievement, id) => {
               return <Achievement address={key} achievement={achievement} id={id} />
             })
             return achievementsArray

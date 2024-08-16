@@ -33,7 +33,7 @@ export const ReceiveAchievementModal = forwardRef<HTMLElement, Modal>(({ data: {
                   }, postMessage?.reputation_requester);
                 setTimeout(() => {
                     window.close()
-                }, 3000)
+                }, 1000)
             }} sx={{
                 marginTop: 8,
                 backgroundColor: '#272440',
