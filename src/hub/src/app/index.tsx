@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './appStyles/index.scss';
 
 const App = () => {
-
   return (
     <>
       <RouteManager />
@@ -18,4 +17,4 @@ const App = () => {
   );
 };
 
-export default withProviders(withRouter, withTheme, withStore, withPersistor, WithICConnect, WithPostMessage, WithAchievementProvider)(App);
+export default withProviders(withRouter, withTheme, withStore, withPersistor, WithICConnect, WithPostMessage)(App);
