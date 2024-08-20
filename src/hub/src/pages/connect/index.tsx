@@ -22,8 +22,9 @@ export const ConnectButton = () => {
           backgroundColor: 'white',
         }
       }} onClick={() => {
+            console.log('env', import.meta.env)
             login({
-              identityProvider: 'http://a3shf-5eaaa-aaaaa-qaafa-cai.localhost:4943/#authorize'
+              identityProvider: `${import.meta.env.VITE_CANISTER_URL_INTERNET_IDENTITY}#authorize`
             })
       }}>Connect</Button>
     </GradientButtonWraper>

@@ -17,6 +17,8 @@ export const AchievementsPost = () => {
     const { canisterId } = useAchievementState();
     const { canisterId: reputationCanisterId } = useReputationState();
 
+    console.log(identity?.getPrincipal().toText(), 'connected principal')
+
     const { call: receiveWithHash }: { call: any } = useAchievementUpdateCall({
       functionName: "receiveAchievementFromIdentityWalletWithHash",
       args: [
