@@ -1,15 +1,15 @@
+import { FC, PropsWithChildren, memo, useEffect } from 'react';
 import { Achievements as AchievementsType, useShallowSelector, getToastMessage } from 'shared';
 import { userModel } from 'entities/user';
-import { useQueryCall, useAuth } from '@ic-reactor/react';
+import { useAuth } from '@ic-reactor/react';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { modalModel } from 'entities/modal';
 import { Modals } from 'entities/modal/model';
 import { useReputationUpdateCall, useAchievementUpdateCall, useAchievementState, useReputationState } from 'app/providers';
 import { Principal } from '@dfinity/principal';
 
 
-export const AchievementsPost = () => {
+export const WithAchievementFlow: FC<PropsWithChildren> = memo(({ children }) => {
     const dispatch = useDispatch();
     const { identity } = useAuth();
 
@@ -64,7 +64,10 @@ export const AchievementsPost = () => {
         );
       }
     }, [canisterId])
-  
-    return (<></>)
-  };
-  
+
+  return(
+    <>
+        {children}
+    </>
+  )
+});

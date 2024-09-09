@@ -5,6 +5,7 @@ export * from './with-ic-connect';
 export * from './with-persistor';
 export * from './with-achievement';
 export * from './with-postmessage';
+export * from './with-achievement-flow';
 
 export const withProviders =
   (...providers: any[]) =>
