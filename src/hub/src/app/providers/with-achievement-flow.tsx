@@ -5,7 +5,7 @@ import { useAuth } from '@ic-reactor/react';
 import { useDispatch } from 'react-redux';
 import { modalModel } from 'entities/modal';
 import { Modals } from 'entities/modal/model';
-import { useReputationUpdateCall, useAchievementUpdateCall, useAchievementState, useReputationState } from 'app/providers';
+import { useReputationUpdateCall, useAchievementUpdateCall, useAchievementState, useReputationState } from 'upas-reputation';
 import { Principal } from '@dfinity/principal';
 
 
